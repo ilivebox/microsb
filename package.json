@@ -1,0 +1,15 @@
+{
+  "name": "microsb",
+  "version": "0.0.1",
+  "description": "Life was like a box of chocolates.",
+  "author": "geminiyellow<geminiyellow@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/geminiyellow/microsb",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geminiyellow/microsb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/geminiyellow/microsb/issues"
+  }
+}
