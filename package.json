@@ -11,5 +11,14 @@
   },
   "bugs": {
     "url": "https://github.com/geminiyellow/microsb/issues"
+  },
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-notify": "^2.2.0",
+    "run-sequence": "^1.0.2"
+  },
+  "dependencies": {
+    "lodash": "^3.6.0"
   }
 }
