@@ -1,0 +1,21 @@
+web:
+  build: node/
+  command: 'bash -c ''npm install; npm start;'''
+  working_dir: /app/user
+  volumes: 
+    - ./node/:/app/user/
+    - /app/user/node_modules
+  environment:
+    PORT: 8080
+  ports:
+    - '8080:8080'
+shell:
+  build: node/
+  command: bash
+  working_dir: /app/user
+  environment:
+    PORT: 8080
+  ports:
+    - '8080:8080'
+  volumes:
+    - '.:/app/user'

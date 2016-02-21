@@ -1,0 +1,7 @@
+{
+  "name": "microsb.net",
+  "version": "1.0.0",
+  "description": "",
+  "image": "heroku/nodejs",
+  "addons": []
+}
