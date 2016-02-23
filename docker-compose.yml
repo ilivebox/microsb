@@ -3,16 +3,16 @@ web:
   command: 'bash -c ''npm install; npm start;'''
   working_dir: /app/user
   environment:
-    PORT: 8080
+    PORT: 3000
   ports:
-    - '8080:8080'
+    - '3000:3000'
 shell:
   build: node/
   command: bash
   working_dir: /app/user
   environment:
-    PORT: 8080
+    PORT: 3000
   ports:
-    - '8080:8080'
+    - '3000:3000'
   volumes:
     - '.:/app/user'
