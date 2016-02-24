@@ -5,7 +5,11 @@
   "author": "geminiyellow@gmail.com",
   "license": "MIT",
   "scripts": {
-    "start": "node server/app.js"
+    "typings-install": "typings install",
+    "postinstall": "npm run typings-install",
+    "build": "webpack --config './configs/webpack/webpack.config.js'",
+    "prestart": "npm run build",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
