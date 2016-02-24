@@ -5,6 +5,8 @@
   "author": "geminiyellow@gmail.com",
   "license": "MIT",
   "scripts": {
+    "watch:test": "npm run test -- --auto-watch --no-single-run",
+    "test": "karma start './configs/karma/karma.conf.js'",
     "typings-install": "typings install",
     "postinstall": "npm run typings-install",
     "build": "webpack --config './configs/webpack/webpack.config.js'",
