@@ -20,7 +20,7 @@ var client = {
   target: 'web',
   entry: '../../client',
   output: {
-    path: __dirname + '../../../dist/client'
+    path: path.join(__dirname, '/../../dist/client')
   }
 };
 
@@ -28,7 +28,7 @@ var server = {
   target: 'node',
   entry: '../../server',
   output: {
-    path: __dirname + '../../../dist/server'
+    path: path.join(__dirname, '/../../dist/server')
   },
   externals: function checkNodeImport(context, request, cb) {
     if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
@@ -39,8 +39,8 @@ var server = {
   },
   node: {
     global: true,
-    __dirname: true,
-    __filename: true,
+    __dirname: false,
+    __filename: false,
     process: true,
     Buffer: true
   }

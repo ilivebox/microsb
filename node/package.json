@@ -11,7 +11,7 @@
     "postinstall": "npm run typings-install",
     "build": "webpack --config './configs/webpack/webpack.config.js'",
     "prestart": "npm run build",
-    "start": "node server/index.js"
+    "start": "node ./dist/server/main.bundle.js"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.3",

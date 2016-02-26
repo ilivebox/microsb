@@ -8,4 +8,4 @@ before_install:
  - docker-compose -v
 
 script:
- - docker-compose run --service-ports web bash -c 'npm install --unsafe-perm && npm test'
+ - docker-compose run --service-ports web bash -c 'npm install && npm test'
