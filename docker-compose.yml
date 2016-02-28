@@ -4,15 +4,25 @@ web:
   working_dir: /app/user
   environment:
     PORT: 3000
+    REDIS_URL: 'redis://herokuRedis:6379'
   ports:
     - '3000:3000'
+  links:
+    - herokuRedis
+
 shell:
   build: node/
   command: bash
   working_dir: /app/user
   environment:
     PORT: 3000
+    REDIS_URL: 'redis://herokuRedis:6379'
   ports:
     - '3000:3000'
   volumes:
-    - '.:/app/user'
+    - './node:/app/user'
+  links:
+    - herokuRedis
+
+herokuRedis:
+  image: redis
