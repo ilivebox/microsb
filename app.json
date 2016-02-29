@@ -1,7 +1,8 @@
 {
-  "name": "microsb.net",
+  "name": "microsb",
   "version": "1.0.0",
-  "description": "",
-  "image": "heroku/nodejs",
-  "addons": []
+  "description": "Life is like a box of chocolates.",
+  "addons": [
+    "heroku-redis"
+  ]
 }

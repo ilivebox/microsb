@@ -1,7 +1,7 @@
 {
   "name": "microsb.net",
   "version": "1.0.0",
-  "description": "",
+  "description": "Life is like a box of chocolates.",
   "author": "geminiyellow@gmail.com",
   "license": "MIT",
   "scripts": {
@@ -13,6 +13,10 @@
     "prestart": "npm run build",
     "start": "node ./dist/server/main.bundle.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geminiyellow/microsb.git"
+  },
   "dependencies": {
     "angular2": "2.0.0-beta.3",
     "compression": "^1.6.1",
@@ -21,7 +25,9 @@
     "es6-shim": "^0.33.3",
     "es7-reflect-metadata": "^1.5.5",
     "express": "^4.13.4",
+    "hiredis": "^0.4.1",
     "morgan": "^1.6.1",
+    "redis": "^2.4.2",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.0",
     "zone.js": "0.5.11"
