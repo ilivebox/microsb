@@ -1,4 +1,5 @@
 web:
+  container_name: microsb-server
   build: node/
   command: 'bash -c ''npm install; npm start;'''
   working_dir: /app/user
@@ -11,6 +12,7 @@ web:
     - herokuRedis
 
 shell:
+  container_name: microsb-shell
   build: node/
   command: bash
   working_dir: /app/user
@@ -25,4 +27,5 @@ shell:
     - herokuRedis
 
 herokuRedis:
+  container_name: microsb-redis
   image: redis
