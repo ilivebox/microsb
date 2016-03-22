@@ -9,8 +9,8 @@ var config = require('./index');
 
 module.exports = function (app) {
   app.use(compression());
-  app.use(express.static(path.join(config.root, 'client')));
-  app.set('client', path.join(config.root, 'client'));
+  app.use(express.static(path.join(config.root, '/dist/client')));
+  app.set('client', path.join(config.root, '/dist/client'));
   app.use(morgan('dev'));
   app.use(errorHandler()); // Error handler - has to be last
 };

@@ -1,9 +1,12 @@
 var webpackMerge = require('webpack-merge');
 var path = require('path');
 
+// Client:
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var common = {
   resolve: {
-    extensions: ['', '.ts', '.json', '.js']
+    extensions: ['', '.ts', '.json', '.js', '.html']
   },
   module: {
     loaders: [
@@ -18,10 +21,38 @@ var common = {
 
 var client = {
   target: 'web',
-  entry: '../../client',
+  entry: {
+    app: '../../client/bootstrap.ts'
+  },
   output: {
     path: path.join(__dirname, '/../../dist/client')
-  }
+  },
+  plugins: [
+    // Inject script and link tags into html files
+    // Reference: https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      template: '../../client/public/index.html',
+      inject: 'body',
+      chunksSortMode: function compare(a, b) {
+        // common always first
+        if (a.names[0] === 'common') {
+          return -1;
+        }
+        // app always last
+        if (a.names[0] === 'app') {
+          return 1;
+        }
+        // vendor before app
+        if (a.names[0] === 'vendor' && b.names[0] === 'app') {
+          return -1;
+        } else {
+          return 1;
+        }
+        // a must be equal to b
+        return 0;
+      }
+    }),
+  ]
 };
 
 var server = {
