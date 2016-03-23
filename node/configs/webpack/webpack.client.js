@@ -18,7 +18,9 @@ var ENV = require('./webpack.helper').ENV;
 module.exports = {
   target: 'web',
   resolve: {
-    root: root('client')
+    root: root('client'),
+    // only discover files that have those extensions
+    extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
   },
   entry: {
     'vendor': root('client', 'vendor.ts'),
@@ -30,37 +32,39 @@ module.exports = {
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].chunk.js'
   },
-  preLoaders: [],
-  loaders: [
-    // Support for CSS as raw text
-    // use 'null' loader in test mode (https://github.com/webpack/null-loader)
-    // all css in client/stylesheets will be bundled in an external css file
-    {
-      test: /\.css$/,
-      include: root('client', 'stylesheets'),
-      loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
-    },
-    // all css required in client/javascripts files will be merged in js files
-    { test: /\.css$/, include: root('client', 'javascripts'), loader: 'raw!postcss' },
+  module: {
+    preLoaders: [],
+    loaders: [
+      // Support for CSS as raw text
+      // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+      // all css in client/stylesheets will be bundled in an external css file
+      {
+        test: /\.css$/,
+        include: root('client', 'stylesheets'),
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+      },
+      // all css required in client/javascripts files will be merged in js files
+      { test: /\.css$/, include: root('client', 'javascripts'), loader: 'raw!postcss' },
 
-    // support for .scss files
-    // use 'null' loader in test mode (https://github.com/webpack/null-loader)
-    // all css in client/stylesheets will be bundled in an external css file
-    {
-      test: /\.scss$/,
-      include: root('client', 'stylesheets'),
-      loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
-    },
-    // all css required in client files will be merged in js files
-    { test: /\.scss$/, include: root('client', 'javascripts'), loader: 'raw!postcss!sass' },
+      // support for .scss files
+      // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+      // all css in client/stylesheets will be bundled in an external css file
+      {
+        test: /\.scss$/,
+        include: root('client', 'stylesheets'),
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
+      },
+      // all css required in client files will be merged in js files
+      { test: /\.scss$/, include: root('client', 'javascripts'), loader: 'raw!postcss!sass' },
 
-    // Raw loader support for *.html
-    // Returns file content as string
-    // See: https://github.com/webpack/raw-loader
-    { test: /\.html$/, loader: 'raw', exclude: [root('client', 'public', 'index.html')] }
-  ],
-  postLoaders: [],
-  noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/],
+      // Raw loader support for *.html
+      // Returns file content as string
+      // See: https://github.com/webpack/raw-loader
+      { test: /\.html$/, loader: 'raw', exclude: [root('client', 'public', 'index.html')] }
+    ],
+    postLoaders: [],
+    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
+  },
   plugins: [
     // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
     // Minify all javascript, switch loaders to minimizing mode
