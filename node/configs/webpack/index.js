@@ -1,6 +1,6 @@
 var webpackMerge = require('webpack-merge');
 
-var defaults = require('./webpack.default');
+var defaults = require('./webpack.defaults');
 
 var common = require('./webpack.common');
 

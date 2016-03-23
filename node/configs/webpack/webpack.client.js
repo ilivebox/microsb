@@ -56,13 +56,14 @@ module.exports = {
       },
       // all css required in client files will be merged in js files
       { test: /\.scss$/, include: root('client', 'javascripts'), loader: 'raw!postcss!sass' },
-
+      
       // Raw loader support for *.html
       // Returns file content as string
       // See: https://github.com/webpack/raw-loader
       { test: /\.html$/, loader: 'raw', exclude: [root('client', 'public', 'index.html')] }
     ],
     postLoaders: [],
+
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
   },
   plugins: [
