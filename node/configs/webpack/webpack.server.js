@@ -3,8 +3,11 @@ var root = require('./webpack.helper').root;
 
 module.exports = {
   target: 'node',
+  resolve: {
+    root: root('server')
+  },
   entry: {
-    'index': '../../server'
+    'index': root('server', 'index.js')
   },
   output: {
     filename: '[name].js',

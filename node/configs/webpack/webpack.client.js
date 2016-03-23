@@ -17,12 +17,16 @@ var ENV = require('./webpack.helper').ENV;
 
 module.exports = {
   target: 'web',
+  resolve: {
+    root: root('client')
+  },
   entry: {
     'vendor': root('client', 'vendor.ts'),
     'index': root('client', 'bootstrap.ts')
   },
   output: {
     path: root('dist', 'client'),
+    publicPath: '/',
     filename: '[name].[hash].js',
     chunkFilename: '[id].[hash].chunk.js'
   },
@@ -83,7 +87,7 @@ module.exports = {
     // Reference: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     new CommonsChunkPlugin({ name: 'vendor', filename: '[name].[hash].js', minChunks: Infinity }),
     new CommonsChunkPlugin({ name: 'common', filename: '[name].[hash].js', minChunks: 2, chunks: ['index', 'vendor'] }),
-    
+
     // Inject script and link tags into html files
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
