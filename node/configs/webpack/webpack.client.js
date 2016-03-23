@@ -37,10 +37,10 @@ module.exports = {
     loaders: [
       // Support for CSS as raw text
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
-      // all css in client/stylesheets will be bundled in an external css file
+      // all css in client/assets/stylesheets will be bundled in an external css file
       {
         test: /\.css$/,
-        include: root('client', 'stylesheets'),
+        include: root('client', 'assets', 'stylesheets'),
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
       },
       // all css required in client/javascripts files will be merged in js files
@@ -48,10 +48,10 @@ module.exports = {
 
       // support for .scss files
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
-      // all css in client/stylesheets will be bundled in an external css file
+      // all css in client/assets/stylesheets will be bundled in an external css file
       {
         test: /\.scss$/,
-        include: root('client', 'stylesheets'),
+        include: root('client', 'assets', 'stylesheets'),
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
       },
       // all css required in client files will be merged in js files
@@ -60,7 +60,7 @@ module.exports = {
       // Raw loader support for *.html
       // Returns file content as string
       // See: https://github.com/webpack/raw-loader
-      { test: /\.html$/, loader: 'raw', exclude: [root('client', 'public', 'index.html')] }
+      { test: /\.html$/, loader: 'raw', exclude: [root('client', 'index.html')] }
     ],
     postLoaders: [],
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
@@ -95,7 +95,8 @@ module.exports = {
     // Inject script and link tags into html files
     // Reference: https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      template: root('client', 'public', 'index.html'),
+      template: root('client', 'index.html'),
+      favicon: root('client', 'assets', 'images', 'favicon.ico'),
       inject: 'body',
       chunksSortMode: function compare(a, b) {
         // common always first
