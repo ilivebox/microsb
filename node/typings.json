@@ -6,7 +6,6 @@
   "devDependencies": {},
   "ambientDependencies": {
     "angular-protractor": "github:DefinitelyTyped/DefinitelyTyped/angular-protractor/angular-protractor.d.ts#17fa1e5f269189f7f8e0f53f8c443e6c2eac562c",
-    "core-js": "registry:dt/core-js#0.0.0+20160317120654",
     "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#6697d6f7dadbf5773cb40ecda35a76027e0783b2",
     "express": "github:DefinitelyTyped/DefinitelyTyped/express/express.d.ts#dd4626a4e23ce8d6d175e0fe8244a99771c8c3f2",
     "hammerjs": "github:DefinitelyTyped/DefinitelyTyped/hammerjs/hammerjs.d.ts#74a4dfc1bc2dfadec47b8aae953b28546cb9c6b7",
