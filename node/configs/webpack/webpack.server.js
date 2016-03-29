@@ -7,7 +7,7 @@ module.exports = {
     root: root('server')
   },
   entry: {
-    'index': root('server', 'index.js')
+    'index': root('server', 'index.ts')
   },
   output: {
     filename: '[name].js',
