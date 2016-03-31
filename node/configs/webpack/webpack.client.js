@@ -66,20 +66,21 @@ module.exports = {
     noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
   },
   plugins: [
-    // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-    // Minify all javascript, switch loaders to minimizing mode
-    new UglifyJsPlugin({
-      // Angular 2 is broken again, disabling mangle until beta 6 that should fix the thing
-      // Todo: remove this with beta 6
-      mangle: false
-    }),
-
-    // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-    // Dedupe modules in the output
-    new DedupePlugin(),
-    // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
-    // Only emit files when there are no errors
-    new NoErrorsPlugin(),
+    // TODO: for dev.
+    // // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+    // // Minify all javascript, switch loaders to minimizing mode
+    // new UglifyJsPlugin({
+    //   // Angular 2 is broken again, disabling mangle until beta 6 that should fix the thing
+    //   // Todo: remove this with beta 6
+    //   mangle: false
+    // }),
+    //
+    // // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
+    // // Dedupe modules in the output
+    // new DedupePlugin(),
+    // // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
+    // // Only emit files when there are no errors
+    // new NoErrorsPlugin(),
 
     // Define env variables to help with builds
     // Reference: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
