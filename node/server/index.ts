@@ -17,7 +17,9 @@ initExpress(app);
 initRoutes(app);
 
 // Start server
-http.createServer(app).listen(port, () => {
+const server = http.createServer(app);
+
+server.listen(port, () => {
   console.log('Express server listening on %d, in %s mode', port, app.get('env'));
 });
 
