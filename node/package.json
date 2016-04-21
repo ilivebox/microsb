@@ -42,6 +42,7 @@
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "hiredis": "^0.4.1",
+    "method-override": "^2.3.5",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
