@@ -8,3 +8,5 @@ export const root = normalize(join(__dirname, '../..'));
 
 // Server port
 export const port = process.env.PORT || 3000;
+
+export const client = '/dist/client';
