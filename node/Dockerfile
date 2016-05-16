@@ -1,4 +1,4 @@
-FROM binarytales/heroku-nodejs:latest
+FROM ilivebox/heroku-nodejs:latest
 
 MAINTAINER geminiyellow<geminiyellow@gmail.com>
 
