@@ -1,9 +1,9 @@
-import * as http from 'http';
-
-import { createContainer } from './express';
-import { enableSession } from  './session';
-import { router } from './router';
-import { IModule } from '../modules/IModule';
+import * as http from "http";
+import { createContainer } from "./express";
+import { enableSession } from "./session";
+import { router } from "./router";
+import { IModule } from "../modules/IModule";
+import { port } from "../configs";
 
 class microsb {
   private container;
@@ -38,7 +38,7 @@ class microsb {
 
   run() {
     this.router.build();
-    this.server.listen(3000, () => console.log('Express server listening on %d, in %s mode', 3000, this.container.get('env')))
+    this.server.listen(port, () => console.log('Express server listening on %d, in %s mode', port, this.container.get('env')))
   };
 }
 

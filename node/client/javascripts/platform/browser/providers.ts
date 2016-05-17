@@ -2,15 +2,14 @@
  * These are globally available services in any component or any other service
  */
 
-import { provide } from 'angular2/core';
-
 // Angular 2
-import { FORM_PROVIDERS } from 'angular2/common';
+import { FORM_PROVIDERS, HashLocationStrategy, LocationStrategy } from "@angular/common";
 
 // Angular 2 Http
-import { HTTP_PROVIDERS } from 'angular2/http';
+import { HTTP_PROVIDERS } from "@angular/http";
+
 // Angular 2 Router
-import { ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
+import { ROUTER_PROVIDERS } from "@angular/router-deprecated";
 
 /*
  * Application Providers/Directives/Pipes
@@ -20,7 +19,7 @@ export const APPLICATION_PROVIDERS = [
   ...FORM_PROVIDERS,
   ...HTTP_PROVIDERS,
   ...ROUTER_PROVIDERS,
-  provide(LocationStrategy, { useClass: HashLocationStrategy }), // use #/ routes, remove this for HTML5 mode
+  { provide: LocationStrategy, useClass: HashLocationStrategy }, // use #/ routes, remove this for HTML5 mode}
 ];
 
 export const PROVIDERS = [

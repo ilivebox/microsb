@@ -23,6 +23,7 @@ module.exports = {
     extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
   },
   entry: {
+    'polyfills': root('client', 'polyfills.ts'),
     'vendor': root('client', 'vendor.ts'),
     'index': root('client', 'bootstrap.ts')
   },
