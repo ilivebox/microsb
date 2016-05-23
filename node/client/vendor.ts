@@ -1,14 +1,19 @@
-// Polyfills
-import 'es6-shim/es6-shim.js';
-import 'angular2/bundles/angular2-polyfills.js';
-
+// https://github.com/AngularClass/angular2-webpack-starter/blob/master/src/vendor.ts
+// For vendors for example jQuery, Lodash, angular2-jwt just import them here unless you plan on
+// chunking vendors files for async loading. You would need to import the async loaded vendors
+// at the entry point of the async loaded file. Also see custom-typings.d.ts as you also need to
+// run `typings install x` where `x` is your module
+import 'zone.js/dist/zone';
+import 'reflect-metadata';
 
 // Angular 2
-import 'angular2/platform/browser';
-import 'angular2/platform/common_dom';
-import 'angular2/core';
-import 'angular2/router';
-import 'angular2/http';
+import '@angular/platform-browser';
+import '@angular/platform-browser-dynamic';
+import '@angular/core';
+import '@angular/common';
+import '@angular/http';
+import '@angular/router-deprecated';
 
 // RxJS
-import 'rxjs';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/mergeMap';

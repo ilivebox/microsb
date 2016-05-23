@@ -1,14 +1,16 @@
-import { Component, OnInit } from 'angular2/core';
-import { FORM_DIRECTIVES } from 'angular2/common';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'home',
-  directives: [...FORM_DIRECTIVES],
+  // The selector is what angular internally uses
+  // for `document.querySelectorAll(selector)` in our index.html
+  // where, in this case, selector is the string 'home'
+  selector: 'home', // <home></home>
+  directives: [],
   pipes: [],
   styles: [require('./home.scss')],
   template: require('./home.html')
 })
-export class Home implements OnInit {
+export class Home {
   constructor() {
     // Do stuff
   }
