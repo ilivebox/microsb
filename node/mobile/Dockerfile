@@ -47,6 +47,11 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # ---------------------------------------------------------
 # ---- Download Android SDK tools into $ANDROID_HOME
+# - using the Gradle Daemon: https://docs.gradle.org/2.8/userguide/gradle_daemon.html
+RUN apt-get -y install gradle
+RUN ln -s $JAVA_HOME /usr/lib/jvm/default-java
+RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
+
 # - Install the Android SDK.
 RUN curl http://dl.google.com/android/android-sdk_r24.2-linux.tgz | tar xz -C /usr/local/
 
