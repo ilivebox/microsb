@@ -1,4 +1,4 @@
-FROM ilivebox/heroku-nodejs:latest
+FROM ilivebox/heroku-nodejs:v5.11.0
 
 MAINTAINER geminiyellow<geminiyellow@gmail.com>
 
