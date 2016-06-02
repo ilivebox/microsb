@@ -81,4 +81,10 @@ RUN apt-get clean
 # ---- Install the NativeScript CLI.
 RUN npm install nativescript -g --unsafe-perm
 
+# ---------------------------------------------------------
+# Add not root user
+RUN useradd -ms /bin/bash docker
+RUN chown -R docker /app/user
+USER docker
+
 CMD ["bash"]
