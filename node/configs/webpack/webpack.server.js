@@ -7,11 +7,11 @@ module.exports = {
     root: root('server')
   },
   entry: {
-    'index': root('server', 'index.ts')
+    'index': root('server-x', 'index.ts')
   },
   output: {
     filename: '[name].js',
-    path: root('dist', 'server')
+    path: root('dist', 'server-x')
   },
   externals: function checkNodeImport(context, request, cb) {
     if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
