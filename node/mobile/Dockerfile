@@ -46,14 +46,20 @@ RUN update-alternatives --config java
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # ---------------------------------------------------------
-# ---- Download Android SDK tools into $ANDROID_HOME
 # - using the Gradle Daemon: https://docs.gradle.org/2.8/userguide/gradle_daemon.html
 RUN apt-get -y install gradle
 RUN ln -s $JAVA_HOME /usr/lib/jvm/default-java
 RUN mkdir ~/.gradle && touch ~/.gradle/gradle.properties && echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
 
+# ---- Download Android SDK tools into $ANDROID_HOME
+ENV ANDROID_SDK_VERSION r24.4.1
+ENV ANDROID_BUILD_TOOLS_VERSION 23.0.3
+ENV ANDROID_SDK_FILENAME android-sdk_${ANDROID_SDK_VERSION}-linux.tgz
+ENV ANDROID_SDK_URL http://dl.google.com/android/${ANDROID_SDK_FILENAME}
+ENV ANDROID_API_LEVEL android-23
+
 # - Install the Android SDK.
-RUN curl http://dl.google.com/android/android-sdk_r24.2-linux.tgz | tar xz -C /usr/local/
+RUN curl $ANDROID_SDK_URL | tar xz -C /usr/local/
 
 # - Set the ANDROID_HOME system environment variable.
 ENV ANDROID_HOME /usr/local/android-sdk-linux
@@ -62,20 +68,21 @@ ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 # - Install the required Android SDKs and the Local Maven repository for Support Libraries.
 # -- android list sdk --all --extended
+# RUN echo y | android update sdk --no-ui --all -t `android list sdk --all|grep "SDK Platform Android 6.0, API 23"|awk -F'[^0-9]*' '{print $2}'`
 RUN echo y | android update sdk --no-ui --all --filter tools
 RUN echo y | android update sdk --no-ui --all --filter platform-tools
 RUN echo y | android update sdk --no-ui --all --filter extra-android-support
 RUN echo y | android update sdk --no-ui --all --filter extra-android-m2repository
 RUN echo y | android update sdk --no-ui --all --filter extra-google-m2repository
 RUN echo y | android update sdk --no-ui --all --filter extra-google-google_play_services
-RUN echo y | android update sdk --no-ui --all --filter android-23
-RUN echo y | android update sdk --no-ui --all --filter build-tools-23.0.1
+RUN echo y | android update sdk --no-ui --all --filter $ANDROID_API_LEVEL
+RUN echo y | android update sdk --no-ui --all --filter build-tools-$ANDROID_BUILD_TOOLS_VERSION
 
 # Create emulator to run tests:
 #RUN echo y | android update sdk --no-ui --all --filter --force sys-img-armeabi-v7a-google_apis-23
 #RUN echo n | android create avd --force --name "google" --target android-23 --abi "google_apis/armeabi-v7a"
 
-RUN apt-get clean
+RUN apt-get autoremove -y && apt-get clean
 
 # ---------------------------------------------------------
 # ---- Install the NativeScript CLI.
@@ -83,8 +90,8 @@ RUN npm install nativescript -g --unsafe-perm
 
 # ---------------------------------------------------------
 # Add not root user
-RUN useradd -ms /bin/bash docker
-RUN chown -R docker /app/user
-USER docker
+# RUN useradd -ms /bin/bash docker
+# RUN chown -R docker /app/user
+# USER docker
 
 CMD ["bash"]
