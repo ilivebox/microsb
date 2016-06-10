@@ -1,3 +1,6 @@
+# ---------------------------------------------------------
+# web
+# ---------------------------------------------------------
 web:
   container_name: microsb-server
   build: node/
@@ -11,6 +14,9 @@ web:
   links:
     - herokuRedis
 
+# ---------------------------------------------------------
+# web:dev
+# ---------------------------------------------------------
 shell:
   container_name: microsb-shell
   build: node/
@@ -19,13 +25,20 @@ shell:
   environment:
     PORT: 3000
     REDIS_URL: 'redis://herokuRedis:6379'
+    MYSQL_URL: 'mysql://herokuMySql:3306'
+    MONGO_URL: 'mongo://herokuMongo:27017'
   ports:
     - '3000:3000'
   volumes:
     - './node:/app/user'
   links:
     - herokuRedis
+    - herokuMongo
+    - herokuMySql
 
+# ---------------------------------------------------------
+# mobile
+# ---------------------------------------------------------
 mobile:
   container_name: microsb-mobile
   build: mobile/
@@ -36,6 +49,19 @@ mobile:
     - './node/client/assets:/app/user/app/assets'
     - './node/client/javascripts:/app/user/app/javascripts'
 
+# ---------------------------------------------------------
+# datasource
+# ---------------------------------------------------------
 herokuRedis:
   container_name: microsb-redis
   image: redis
+
+herokuMongo:
+  container_name: microsb-mongo
+  image: mongo
+
+herokuMySql:
+  container_name: microsb-mysql
+  image: mysql
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
