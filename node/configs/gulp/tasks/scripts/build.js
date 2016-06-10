@@ -6,7 +6,7 @@ const tscConfig = require(env.inProject('tsconfig.json'));
 
 module.exports = function (gulp, callback) {
   return gulp
-    .src(env.inServer('**/*.ts'))
+    .src(env.inServer('**/*.+(ts|js)'))
     .pipe(typescript(tscConfig.compilerOptions))
     .pipe(gulp.dest(env.inDist('server')));
 };
