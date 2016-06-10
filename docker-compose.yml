@@ -28,18 +28,13 @@ shell:
 
 mobile:
   container_name: microsb-mobile
-  build: node/mobile/
+  build: mobile/
   command: bash
   working_dir: /app/user
-  environment:
-    PORT: 3000
-    REDIS_URL: 'redis://herokuRedis:6379'
-  ports:
-    - '3000:3000'
   volumes:
-    - './node:/app/user'
-  links:
-    - herokuRedis
+    - './mobile:/app/user'
+    - './node/client/assets:/app/user/app/assets'
+    - './node/client/javascripts:/app/user/app/javascripts'
 
 herokuRedis:
   container_name: microsb-redis
