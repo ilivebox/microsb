@@ -1,33 +1,39 @@
 {
   "description": "Life is like a box of chocolates.",
   "license": "MIT",
+  "readme": "microsb mobile application",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/geminiyellow/microsb.git"
   },
-	"nativescript": {
-		"id": "org.nativescript.mobile",
-		"tns-android": {
-			"version": "2.0.0"
-		}
-	},
-	"dependencies": {
-		"@angular/common": "2.0.0-rc.1",
-		"@angular/compiler": "2.0.0-rc.1",
-		"@angular/core": "2.0.0-rc.1",
-		"@angular/platform-browser": "2.0.0-rc.1",
-		"@angular/platform-browser-dynamic": "2.0.0-rc.1",
-		"@angular/platform-server": "2.0.0-rc.1",
-		"@angular/router-deprecated": "2.0.0-rc.1",
-		"nativescript-angular": "0.1.1",
-		"tns-core-modules": "^2.0.0"
-	},
-	"devDependencies": {
-		"babel-traverse": "6.9.0",
-		"babel-types": "6.9.1",
-		"babylon": "6.8.1",
-		"filewalker": "0.1.2",
-		"lazy": "1.0.11",
-		"nativescript-dev-typescript": "^0.3.2"
-	}
+  "nativescript": {
+    "id": "org.nativescript.mobile",
+    "tns-ios": {
+      "version": "2.0.1"
+    },
+    "tns-android": {
+      "version": "2.0.0"
+    }
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.1",
+    "@angular/compiler": "2.0.0-rc.1",
+    "@angular/core": "2.0.0-rc.1",
+    "@angular/http": "^2.0.0-rc.1",
+    "@angular/platform-browser": "2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.1",
+    "@angular/platform-server": "2.0.0-rc.1",
+    "@angular/router-deprecated": "2.0.0-rc.1",
+    "nativescript-angular": "0.1.1",
+    "tns-core-modules": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-traverse": "6.9.0",
+    "babel-types": "6.10.0",
+    "babylon": "6.8.1",
+    "filewalker": "0.1.2",
+    "lazy": "1.0.11",
+    "nativescript-dev-typescript": "^0.3.2",
+    "typescript": "^1.8.10"
+  }
 }
