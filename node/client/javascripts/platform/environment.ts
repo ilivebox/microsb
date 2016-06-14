@@ -4,7 +4,8 @@ import { enableProdMode } from '@angular/core';
 // Environment Providers
 let PROVIDERS = [];
 
-if ('production' === process.env.ENV) {
+// TODO: 
+if ('<%= ENV %>' === 'production' || '<%= TARGET_DESKTOP_BUILD %>' === 'true') {
   // Production
   enableProdMode();
 
