@@ -4,14 +4,8 @@ var defaults = require('./webpack.default');
 
 var common = require('./webpack.common');
 
-var server = require('./webpack.server');
-
 var client = require('./webpack.client');
 
 module.exports = [
-  // Client
   webpackMerge({}, defaults, common, client),
-
-  // Server
-  webpackMerge({}, defaults, common, server)
 ];
